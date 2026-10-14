@@ -1,0 +1,833 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fresh Bazar | Everyday Grocery Store</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --green: #218838;
+      --dark: #173d28;
+      --light: #f3f8ef;
+      --orange: #ffb347;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: #303830;
+      line-height: 1.7;
+      background: #fff;
+      scroll-behavior: smooth;
+    }
+
+    section {
+      padding: 75px 0;
+      scroll-margin-top: 75px;
+    }
+
+    .navbar {
+      background: white;
+      box-shadow: 0 2px 15px #0000000d;
+    }
+
+    .navbar-brand {
+      color: var(--green);
+      font-size: 25px;
+      font-weight: 800;
+    }
+
+    .nav-link {
+      color: #333;
+      font-weight: 600;
+      margin: 0 7px;
+    }
+
+    .nav-link:hover {
+      color: var(--green);
+    }
+
+    .hero {
+      min-height: 570px;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(90deg, #102e20e8, #102e2080),
+        url("https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1800&q=85")
+        center/cover no-repeat;
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 700px;
+      animation: slideUp 1s ease;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 5vw, 62px);
+      line-height: 1.2;
+      font-weight: 800;
+      margin-bottom: 22px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #f0f5ef;
+      margin-bottom: 28px;
+    }
+
+    .btn-green {
+      background: var(--green);
+      color: white;
+      border: 2px solid var(--green);
+      padding: 12px 25px;
+      border-radius: 7px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-block;
+      transition: .3s;
+    }
+
+    .btn-green:hover {
+      background: #176b2b;
+      border-color: #176b2b;
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    .btn-outline-light-custom {
+      color: white;
+      border: 2px solid white;
+      padding: 12px 25px;
+      border-radius: 7px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-block;
+      transition: .3s;
+    }
+
+    .btn-outline-light-custom:hover {
+      background: white;
+      color: var(--dark);
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 42px;
+    }
+
+    .section-heading h2 {
+      color: var(--dark);
+      font-size: clamp(28px, 4vw, 38px);
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .section-heading p {
+      color: #687168;
+    }
+
+    .benefit-card,
+    .category-card,
+    .product-card {
+      height: 100%;
+      border: 1px solid #e8eee6;
+      border-radius: 14px;
+      overflow: hidden;
+      background: white;
+      transition: transform .3s, box-shadow .3s;
+    }
+
+    .benefit-card:hover,
+    .category-card:hover,
+    .product-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 12px 30px #173d2815;
+    }
+
+    .benefit-card {
+      padding: 28px 22px;
+      text-align: center;
+    }
+
+    .benefit-icon {
+      width: 62px;
+      height: 62px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 17px;
+      border-radius: 50%;
+      color: var(--green);
+      background: #eaf6e8;
+      font-size: 27px;
+    }
+
+    .benefit-card h3,
+    .category-card h3,
+    .product-card h3 {
+      font-size: 19px;
+      color: var(--dark);
+      font-weight: 700;
+    }
+
+    .benefit-card p,
+    .category-card p,
+    .product-card p {
+      color: #6b746b;
+      font-size: 14px;
+      margin-bottom: 0;
+    }
+
+    .category-card img {
+      width: 100%;
+      height: 185px;
+      object-fit: cover;
+      transition: transform .4s;
+    }
+
+    .category-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .category-info {
+      padding: 20px;
+    }
+
+    .products-section {
+      background: #f8faf6;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      background: #f4f5f2;
+    }
+
+    .product-info {
+      padding: 20px;
+    }
+
+    .price {
+      color: var(--green);
+      font-size: 19px;
+      font-weight: 800;
+      margin: 12px 0;
+    }
+
+    .offer {
+      background: var(--dark);
+      color: white;
+      border-radius: 20px;
+      padding: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .offer h2 {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
+    }
+
+    .offer p {
+      color: #e0e9df;
+      max-width: 580px;
+    }
+
+    .offer-icon {
+      font-size: 100px;
+      color: #ffffff20;
+    }
+
+    .about-section {
+      background: var(--light);
+    }
+
+    .about-image {
+      width: 100%;
+      height: 100%;
+      min-height: 360px;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+
+    .about-copy h2 {
+      color: var(--dark);
+      font-weight: 800;
+      font-size: 35px;
+      margin-bottom: 20px;
+    }
+
+    .about-copy p {
+      color: #606b60;
+    }
+
+    .about-list {
+      list-style: none;
+      padding: 0;
+      margin: 22px 0;
+    }
+
+    .about-list li {
+      margin-bottom: 12px;
+    }
+
+    .about-list i {
+      color: var(--green);
+      margin-right: 8px;
+    }
+
+    .closing-section {
+      text-align: center;
+    }
+
+    .closing-section h2 {
+      color: var(--dark);
+      font-weight: 800;
+      font-size: 35px;
+    }
+
+    .closing-section p {
+      max-width: 700px;
+      margin: 15px auto 25px;
+      color: #687168;
+    }
+
+    .contact-box {
+      background: #f3f8ef;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      height: 100%;
+    }
+
+    .contact-box i {
+      font-size: 30px;
+      color: var(--green);
+    }
+
+    footer {
+      background: #102e20;
+      color: #e6eee7;
+      padding: 35px 0 18px;
+    }
+
+    footer a {
+      color: #e6eee7;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--orange);
+    }
+
+    .footer-brand {
+      font-size: 25px;
+      font-weight: 800;
+      color: white;
+    }
+
+    .social-links a {
+      font-size: 21px;
+      margin-right: 13px;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 767px) {
+      section {
+        padding: 55px 0;
+      }
+
+      .hero {
+        min-height: 520px;
+        text-align: center;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .offer {
+        padding: 30px 22px;
+        text-align: center;
+      }
+
+      .offer-icon {
+        font-size: 60px;
+        margin-top: 15px;
+      }
+
+      .about-copy h2,
+      .closing-section h2 {
+        font-size: 29px;
+      }
+
+      .about-image {
+        min-height: 260px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#home">
+        <i class="bi bi-basket2-fill"></i> Fresh Bazar
+      </a>
+
+      <button class="navbar-toggler" type="button"
+        data-bs-toggle="collapse" data-bs-target="#mainNav"
+        aria-controls="mainNav" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#categories">Categories</a></li>
+          <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item ms-lg-2">
+            <a class="btn-green" href="#products">Explore Groceries</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <span class="badge text-bg-light mb-3 p-2">
+          Your everyday grocery partner
+        </span>
+
+        <h1>Freshness You Can Trust, Every Day</h1>
+
+        <p>
+          From fresh fruits and vegetables to everyday kitchen essentials,
+          find what your family needs in one place. Make grocery shopping
+          simpler, more convenient, and easier on your budget.
+        </p>
+
+        <a href="#products" class="btn-green me-2 mb-2">
+          Shop Products <i class="bi bi-arrow-right"></i>
+        </a>
+
+        <a href="#about" class="btn-outline-light-custom mb-2">
+          Know Our Story
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Benefits -->
+  <section>
+    <div class="container">
+      <div class="section-heading">
+        <h2>Why Shop at Fresh Bazar?</h2>
+        <p>
+          Everyday shopping should feel simple. We bring together the
+          essentials that help keep your kitchen ready for every meal.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-sm-6 col-lg-4">
+          <div class="benefit-card">
+            <div class="benefit-icon"><i class="bi bi-flower1"></i></div>
+            <h3>Fresh Every Day</h3>
+            <p>
+              Choose fruits and vegetables for fresh salads, homemade meals,
+              and the little moments around your family table.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-4">
+          <div class="benefit-card">
+            <div class="benefit-icon"><i class="bi bi-basket"></i></div>
+            <h3>Everyday Essentials</h3>
+            <p>
+              Find pantry staples, cooking ingredients, and household
+              favourites together in one convenient place.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-4">
+          <div class="benefit-card">
+            <div class="benefit-icon"><i class="bi bi-wallet2"></i></div>
+            <h3>Value for Your Money</h3>
+            <p>
+              Explore everyday grocery options and plan your shopping
+              around the needs of your home and your budget.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section id="categories" class="products-section">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Shop by Category</h2>
+        <p>
+          Whether you're preparing breakfast, cooking lunch, or planning
+          dinner, start with the ingredients you need.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-sm-6 col-lg-3">
+          <article class="category-card">
+            <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=700&q=80"
+              alt="Fresh fruits" loading="lazy">
+            <div class="category-info">
+              <h3>Fresh Fruits</h3>
+              <p>Colourful, delicious choices for breakfast, snacks, and desserts.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+          <article class="category-card">
+            <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=700&q=80"
+              alt="Fresh vegetables" loading="lazy">
+            <div class="category-info">
+              <h3>Vegetables</h3>
+              <p>Everyday ingredients for sabzi, salads, soups, and family meals.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+          <article class="category-card">
+            <img src="https://images.unsplash.com/photo-1608198093002-ad4e005484df?auto=format&fit=crop&w=700&q=80"
+              alt="Bread and bakery products" loading="lazy">
+            <div class="category-info">
+              <h3>Bakery</h3>
+              <p>Simple favourites for morning tea, breakfast, and quick snacks.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+          <article class="category-card">
+            <img src="https://images.unsplash.com/photo-1580913428735-bd3c269d6a82?auto=format&fit=crop&w=700&q=80"
+              alt="Milk and dairy products" loading="lazy">
+            <div class="category-info">
+              <h3>Dairy Products</h3>
+              <p>Useful everyday ingredients for tea, breakfast, and cooking.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section id="products">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Popular Grocery Picks</h2>
+        <p>
+          Discover familiar kitchen favourites that make daily cooking
+          and meal planning a little easier.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-sm-6 col-lg-3">
+          <article class="product-card">
+            <img src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=700&q=80"
+              alt="Red apples" loading="lazy">
+            <div class="product-info">
+              <h3>Fresh Apples</h3>
+              <p>A handy choice for lunch boxes and everyday snacking.</p>
+              <div class="price">₹120 / kg</div>
+              <a href="#contact" class="btn-green w-100 text-center">
+                Enquire Now
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+          <article class="product-card">
+            <img src="https://images.unsplash.com/photo-1546094096-0df4bcaaa337?auto=format&fit=crop&w=700&q=80"
+              alt="Fresh tomatoes" loading="lazy">
+            <div class="product-info">
+              <h3>Fresh Tomatoes</h3>
+              <p>A kitchen staple for curries, gravies, and salads.</p>
+              <div class="price">₹40 / kg</div>
+              <a href="#contact" class="btn-green w-100 text-center">
+                Enquire Now
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+          <article class="product-card">
+            <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=700&q=80"
+              alt="Wheat grains" loading="lazy">
+            <div class="product-info">
+              <h3>Whole Wheat</h3>
+              <p>A pantry essential for preparing everyday rotis and meals.</p>
+              <div class="price">₹45 / kg</div>
+              <a href="#contact" class="btn-green w-100 text-center">
+                Enquire Now
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+          <article class="product-card">
+            <img src="https://images.unsplash.com/photo-1563636619-e9143da7973b?auto=format&fit=crop&w=700&q=80"
+              alt="Glass of milk" loading="lazy">
+            <div class="product-info">
+              <h3>Fresh Milk</h3>
+              <p>A familiar favourite for tea, coffee, and breakfast.</p>
+              <div class="price">₹60 / litre</div>
+              <a href="#contact" class="btn-green w-100 text-center">
+                Enquire Now
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <p class="text-center text-secondary small mt-4">
+        Prices shown are sample prices for this website design.
+        Actual prices and availability may vary.
+      </p>
+    </div>
+  </section>
+
+  <!-- Offers -->
+  <section class="pt-0">
+    <div class="container">
+      <div class="offer">
+        <div class="row align-items-center">
+          <div class="col-lg-9">
+            <span class="badge text-bg-warning mb-3">Smart Shopping</span>
+            <h2>Good Food, Great Savings!</h2>
+            <p class="mt-3 mb-4">
+              Stock up on your household favourites without stretching
+              your budget. Plan your grocery list, explore your options,
+              and get more value from your everyday shopping.
+            </p>
+            <a href="#products" class="btn-green">
+              Explore Products <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+
+          <div class="col-lg-3 text-center">
+            <i class="bi bi-basket3-fill offer-icon"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-6">
+          <img class="about-image"
+            src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1000&q=85"
+            alt="Fresh produce at a grocery market" loading="lazy">
+        </div>
+
+        <div class="col-lg-6">
+          <div class="about-copy">
+            <span class="text-success fw-bold">ABOUT FRESH BAZAR</span>
+            <h2 class="mt-2">Your Everyday Grocery Partner</h2>
+
+            <p>
+              We believe grocery shopping should be easy, reliable,
+              and stress-free. From vegetables for a homemade meal to
+              the essentials you need to restock your pantry, Fresh Bazar
+              brings everyday shopping needs together in one place.
+            </p>
+
+            <p>
+              We understand the small things that make a difference:
+              finding the ingredients for a favourite family recipe,
+              preparing a quick breakfast before work, or making sure
+              the kitchen is ready for the week ahead.
+            </p>
+
+            <p>
+              Our aim is to make those everyday tasks simpler with
+              convenient choices, clear product information, and
+              value-conscious shopping.
+            </p>
+
+            <ul class="about-list">
+              <li><i class="bi bi-check-circle-fill"></i> Everyday groceries in one place</li>
+              <li><i class="bi bi-check-circle-fill"></i> Options for daily meals and pantry needs</li>
+              <li><i class="bi bi-check-circle-fill"></i> A simple, easy-to-browse shopping experience</li>
+            </ul>
+
+            <a href="#categories" class="btn-green">Explore Categories</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing message -->
+  <section class="closing-section">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Your Kitchen Deserves the Best</h2>
+        <p>
+          Every great meal starts with good ingredients. Whether you're
+          planning a family dinner, preparing a quick breakfast, or
+          restocking your pantry, Fresh Bazar is here to help make
+          everyday grocery shopping easier.
+        </p>
+        <p>
+          Thank you for making Fresh Bazar a part of your home.
+        </p>
+        <a href="#products" class="btn-green">
+          Find Your Essentials <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="products-section" id="contact">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Get in Touch</h2>
+        <p>
+          Have a question about a product or want to know more?
+          Reach out using the contact details you provide for your store.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="contact-box">
+            <i class="bi bi-geo-alt"></i>
+            <h3 class="fs-5 mt-3">Visit Us</h3>
+            <p class="text-secondary mb-0">
+              Add your store address here.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="contact-box">
+            <i class="bi bi-telephone"></i>
+            <h3 class="fs-5 mt-3">Call Us</h3>
+            <p class="text-secondary mb-0">
+              Add your store phone number here.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="contact-box">
+            <i class="bi bi-envelope"></i>
+            <h3 class="fs-5 mt-3">Email Us</h3>
+            <p class="text-secondary mb-0">
+              Add your store email address here.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row g-4 pb-4">
+        <div class="col-md-6">
+          <a href="#home" class="footer-brand">
+            <i class="bi bi-basket2-fill"></i> Fresh Bazar
+          </a>
+          <p class="mt-3">
+            Fresh choices, fair prices, and simpler everyday grocery shopping.
+            Helping you get ready for the next meal, one grocery list at a time.
+          </p>
+        </div>
+
+        <div class="col-md-3">
+          <h3 class="fs-5 text-white">Quick Links</h3>
+          <ul class="list-unstyled">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#categories">Categories</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#about">About Us</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-3">
+          <h3 class="fs-5 text-white">Follow Us</h3>
+          <p>Stay connected with Fresh Bazar.</p>
+          <div class="social-links">
+            <a href="#contact" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#contact" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#contact" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <hr class="border-light opacity-25">
+
+      <p class="text-center small mb-0">
+        &copy; 2026 Fresh Bazar. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
