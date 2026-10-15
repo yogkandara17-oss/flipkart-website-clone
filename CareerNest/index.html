@@ -1,0 +1,1538 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CareerNest helps job seekers discover opportunities and recruiters find talented professionals.">
+    <title>CareerNest | Find Your Next Opportunity</title>
+
+    <style>
+        :root {
+            --navy: #142b45;
+            --navy-light: #203e5d;
+            --teal: #16a085;
+            --teal-dark: #10866f;
+            --white: #ffffff;
+            --bg: #f5f8fa;
+            --text: #344054;
+            --muted: #718096;
+            --border: #e3eaf0;
+            --radius: 14px;
+            --shadow: 0 8px 28px rgba(20, 43, 69, 0.07);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 85px;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button, input, select {
+            font: inherit;
+        }
+
+        button, a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .container {
+            width: min(1160px, 90%);
+            margin: auto;
+        }
+
+        .section {
+            padding: 78px 0;
+        }
+
+        .section-heading {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 38px;
+        }
+
+        .section-heading h2 {
+            color: var(--navy);
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+        }
+
+        .eyebrow {
+            display: inline-block;
+            color: var(--teal-dark);
+            font-size: .82rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 21px;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            background: var(--teal);
+            color: var(--white);
+            font-weight: 700;
+            transition: background .25s, transform .25s;
+        }
+
+        .btn:hover {
+            background: var(--teal-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--navy);
+            border-color: var(--border);
+        }
+
+        .btn-outline:hover {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        /* Navigation */
+
+        .navbar {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-inner {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .logo {
+            font-size: 1.7rem;
+            font-weight: 800;
+            letter-spacing: -.8px;
+            color: var(--navy);
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: var(--teal);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            font-size: .93rem;
+            font-weight: 600;
+            transition: color .2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--teal);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+
+        /* Hero */
+
+        .hero {
+            padding: 85px 0 70px;
+            background:
+                radial-gradient(circle at 90% 10%, rgba(22,160,133,.13), transparent 27%),
+                linear-gradient(135deg, #f7fbfd, #edf6f5);
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            align-items: center;
+            gap: 55px;
+        }
+
+        .hero-content {
+            animation: fadeUp .7s ease both;
+        }
+
+        .hero h1 {
+            color: var(--navy);
+            font-size: clamp(2.5rem, 5vw, 4.2rem);
+            line-height: 1.12;
+            letter-spacing: -2px;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            color: var(--teal);
+        }
+
+        .hero-content > p {
+            max-width: 550px;
+            color: var(--muted);
+            font-size: 1.05rem;
+            margin-bottom: 30px;
+        }
+
+        .search-box {
+            background: var(--white);
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .search-field {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .search-field label {
+            display: block;
+            font-size: .76rem;
+            color: var(--muted);
+            margin-bottom: 3px;
+        }
+
+        .search-field input,
+        .search-field select {
+            width: 100%;
+            min-width: 0;
+            border: none;
+            outline: none;
+            color: var(--navy);
+            background: transparent;
+            padding: 3px 0;
+        }
+
+        .search-box .btn {
+            flex-shrink: 0;
+        }
+
+        .popular-searches {
+            margin-top: 19px;
+            color: var(--muted);
+            font-size: .86rem;
+        }
+
+        .popular-searches a {
+            color: var(--navy);
+            font-weight: 600;
+            margin-left: 9px;
+        }
+
+        .popular-searches a:hover {
+            color: var(--teal);
+        }
+
+        .hero-visual {
+            position: relative;
+            min-height: 370px;
+            display: grid;
+            place-items: center;
+            animation: fadeUp .9s ease both;
+        }
+
+        .visual-card {
+            background: var(--white);
+            padding: 28px;
+            border-radius: 20px;
+            box-shadow: 0 25px 65px rgba(20,43,69,.12);
+            width: min(100%, 380px);
+            position: relative;
+            z-index: 2;
+        }
+
+        .visual-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .visual-top h3 {
+            color: var(--navy);
+            font-size: 1.05rem;
+        }
+
+        .live-tag {
+            color: var(--teal-dark);
+            background: #e7f8f3;
+            border-radius: 20px;
+            padding: 4px 10px;
+            font-size: .75rem;
+            font-weight: 700;
+        }
+
+        .mini-job {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .mini-job:last-child {
+            border: none;
+        }
+
+        .company-icon {
+            width: 46px;
+            height: 46px;
+            flex-shrink: 0;
+            display: grid;
+            place-items: center;
+            background: #e8f4f3;
+            color: var(--teal-dark);
+            font-weight: 800;
+            border-radius: 12px;
+        }
+
+        .mini-job h4 {
+            color: var(--navy);
+            font-size: .94rem;
+        }
+
+        .mini-job p {
+            color: var(--muted);
+            font-size: .81rem;
+        }
+
+        .floating-note {
+            position: absolute;
+            right: -8px;
+            bottom: 10px;
+            z-index: 3;
+            background: var(--white);
+            box-shadow: var(--shadow);
+            border-radius: 12px;
+            padding: 14px 18px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .floating-note strong {
+            display: block;
+            color: var(--navy);
+        }
+
+        .floating-note span {
+            font-size: .8rem;
+            color: var(--muted);
+        }
+
+        /* Stats */
+
+        .stats {
+            background: var(--navy);
+            color: var(--white);
+            padding: 28px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2px;
+        }
+
+        .stat p {
+            font-size: .87rem;
+            color: #c4d1df;
+        }
+
+        /* Categories */
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .category-card {
+            padding: 27px 20px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            transition: transform .25s, box-shadow .25s, border-color .25s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow);
+            border-color: #a5ddd1;
+        }
+
+        .category-icon {
+            width: 52px;
+            height: 52px;
+            display: grid;
+            place-items: center;
+            background: #e7f7f3;
+            color: var(--teal-dark);
+            border-radius: 14px;
+            font-size: 1.5rem;
+            margin-bottom: 19px;
+        }
+
+        .category-card h3 {
+            color: var(--navy);
+            margin-bottom: 6px;
+            font-size: 1.05rem;
+        }
+
+        .category-card p {
+            font-size: .86rem;
+            color: var(--muted);
+        }
+
+        .category-card .job-count {
+            display: block;
+            margin-top: 17px;
+            font-size: .82rem;
+            color: var(--teal-dark);
+            font-weight: 700;
+        }
+
+        /* Jobs */
+
+        .jobs-section {
+            background: #edf3f6;
+        }
+
+        .jobs-layout {
+            display: grid;
+            grid-template-columns: 245px 1fr;
+            gap: 25px;
+            align-items: start;
+        }
+
+        .filter-panel {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+        }
+
+        .filter-panel h3 {
+            color: var(--navy);
+            margin-bottom: 19px;
+        }
+
+        .filter-group {
+            margin-bottom: 22px;
+        }
+
+        .filter-group label {
+            display: block;
+            color: var(--navy);
+            font-weight: 700;
+            font-size: .88rem;
+            margin-bottom: 8px;
+        }
+
+        .filter-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            background: var(--white);
+            color: var(--text);
+            outline-color: var(--teal);
+        }
+
+        .jobs-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 19px;
+        }
+
+        .jobs-top h3 {
+            color: var(--navy);
+        }
+
+        .jobs-top p {
+            color: var(--muted);
+            font-size: .85rem;
+        }
+
+        .job-list {
+            display: grid;
+            gap: 16px;
+        }
+
+        .job-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            transition: box-shadow .25s, transform .25s;
+        }
+
+        .job-card:hover {
+            box-shadow: var(--shadow);
+            transform: translateY(-3px);
+        }
+
+        .job-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+
+        .job-header .company-icon {
+            width: 54px;
+            height: 54px;
+            font-size: 1.1rem;
+        }
+
+        .job-info {
+            flex: 1;
+        }
+
+        .job-info h3 {
+            color: var(--navy);
+            font-size: 1.1rem;
+        }
+
+        .job-info .company {
+            color: var(--muted);
+            font-size: .88rem;
+        }
+
+        .job-tag {
+            display: inline-block;
+            background: #e8f6f2;
+            color: var(--teal-dark);
+            padding: 4px 9px;
+            border-radius: 5px;
+            font-size: .75rem;
+            font-weight: 700;
+            margin-top: 9px;
+        }
+
+        .job-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 17px;
+            padding: 18px 0;
+            color: var(--muted);
+            font-size: .85rem;
+        }
+
+        .job-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            border-top: 1px solid var(--border);
+            padding-top: 16px;
+        }
+
+        .job-footer strong {
+            color: var(--navy);
+        }
+
+        .job-footer small {
+            color: var(--muted);
+        }
+
+        /* Career benefits */
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 23px;
+        }
+
+        .benefit-card {
+            padding: 30px;
+            background: var(--white);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+
+        .benefit-card .category-icon {
+            font-size: 1.35rem;
+        }
+
+        .benefit-card h3 {
+            color: var(--navy);
+            margin-bottom: 10px;
+        }
+
+        .benefit-card p {
+            color: var(--muted);
+            font-size: .92rem;
+        }
+
+        /* Recruiters */
+
+        .recruiter-section {
+            padding: 70px 0;
+        }
+
+        .recruiter-box {
+            padding: 55px;
+            border-radius: 22px;
+            background: var(--navy);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .recruiter-box::after {
+            content: "";
+            width: 250px;
+            height: 250px;
+            border: 35px solid rgba(255,255,255,.05);
+            border-radius: 50%;
+            position: absolute;
+            right: 16%;
+            top: -120px;
+        }
+
+        .recruiter-content {
+            max-width: 600px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .recruiter-content .eyebrow {
+            color: #6ee0c5;
+        }
+
+        .recruiter-content h2 {
+            font-size: clamp(1.8rem, 3vw, 2.7rem);
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .recruiter-content p {
+            color: #c4d1df;
+            margin-bottom: 23px;
+        }
+
+        .recruiter-box .btn {
+            position: relative;
+            z-index: 1;
+            flex-shrink: 0;
+        }
+
+        /* Newsletter */
+
+        .newsletter {
+            background: #e7f3f1;
+            padding: 55px 0;
+        }
+
+        .newsletter-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .newsletter h2 {
+            color: var(--navy);
+            margin-bottom: 7px;
+        }
+
+        .newsletter p {
+            color: var(--muted);
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            width: min(100%, 430px);
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            min-width: 0;
+            padding: 13px;
+            border: 1px solid #d1e1de;
+            border-radius: 8px;
+            outline-color: var(--teal);
+            background: var(--white);
+        }
+
+        /* Footer */
+
+        .footer {
+            background: #102238;
+            color: #c4d1df;
+            padding: 55px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 35px;
+            padding-bottom: 38px;
+        }
+
+        .footer .logo {
+            color: var(--white);
+            display: inline-block;
+            margin-bottom: 14px;
+        }
+
+        .footer-about p {
+            max-width: 310px;
+            font-size: .88rem;
+            color: #b3c2d2;
+        }
+
+        .footer h3 {
+            color: var(--white);
+            font-size: 1rem;
+            margin-bottom: 17px;
+        }
+
+        .footer ul {
+            list-style: none;
+            display: grid;
+            gap: 10px;
+        }
+
+        .footer li a {
+            font-size: .88rem;
+            transition: color .2s;
+        }
+
+        .footer li a:hover {
+            color: #6ee0c5;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #30445a;
+            padding-top: 19px;
+            text-align: center;
+            font-size: .82rem;
+            color: #a8b9cb;
+        }
+
+        /* Animation */
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(22px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-9px);
+            }
+        }
+
+        /* Responsive design */
+
+        @media (max-width: 1000px) {
+            .nav-links {
+                gap: 15px;
+            }
+
+            .nav-actions .btn {
+                padding: 10px 13px;
+            }
+
+            .hero-grid {
+                gap: 30px;
+            }
+
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 760px) {
+            .nav-inner {
+                min-height: 70px;
+                flex-wrap: wrap;
+                padding: 12px 0;
+            }
+
+            .menu-toggle {
+                display: block;
+                order: 3;
+                margin-left: auto;
+                width: 42px;
+                height: 42px;
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                background: var(--white);
+                color: var(--navy);
+                font-size: 1.4rem;
+            }
+
+            .nav-actions {
+                order: 2;
+                margin-left: auto;
+            }
+
+            .nav-links {
+                display: none;
+                order: 4;
+                flex-basis: 100%;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                padding: 8px 0;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 10px 5px;
+            }
+
+            /* CSS-only mobile navigation */
+            .navbar:has(.menu-toggle:focus) .nav-links,
+            .navbar:has(.menu-toggle:active) .nav-links {
+                display: flex;
+            }
+
+            .nav-inner:focus-within .nav-links {
+                display: flex;
+            }
+
+            .hero {
+                padding: 58px 0;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                letter-spacing: -1px;
+            }
+
+            .hero-visual {
+                min-height: 330px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                row-gap: 25px;
+            }
+
+            .jobs-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-panel {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .filter-panel h3 {
+                grid-column: 1 / -1;
+                margin-bottom: 0;
+            }
+
+            .filter-group {
+                margin-bottom: 0;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .recruiter-box {
+                padding: 35px 28px;
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .newsletter-inner {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .newsletter-form {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 92%;
+            }
+
+            .logo {
+                font-size: 1.45rem;
+            }
+
+            .nav-actions .btn {
+                padding: 9px 11px;
+                font-size: .82rem;
+            }
+
+            .nav-actions .btn-outline {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .search-box {
+                align-items: stretch;
+                flex-direction: column;
+                padding: 17px;
+            }
+
+            .search-field {
+                padding-bottom: 10px;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .search-box .btn {
+                width: 100%;
+            }
+
+            .popular-searches a {
+                display: inline-block;
+                margin: 5px 7px 0 0;
+            }
+
+            .section {
+                padding: 55px 0;
+            }
+
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-panel {
+                grid-template-columns: 1fr;
+            }
+
+            .jobs-top {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .job-card {
+                padding: 18px;
+            }
+
+            .job-header {
+                gap: 10px;
+            }
+
+            .job-info h3 {
+                font-size: 1rem;
+            }
+
+            .job-meta {
+                gap: 10px;
+            }
+
+            .job-footer {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .recruiter-box {
+                padding: 30px 22px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form .btn {
+                width: 100%;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+
+            .floating-note {
+                right: -2px;
+                bottom: 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="container nav-inner">
+            <a href="#home" class="logo">Career<span>Nest</span></a>
+
+            <nav aria-label="Main navigation">
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#categories">Explore Jobs</a></li>
+                    <li><a href="#jobs">Find Jobs</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#recruiters">For Recruiters</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="#jobs" class="btn btn-outline">Sign In</a>
+                <a href="#recruiters" class="btn">Post a Job</a>
+            </div>
+
+            <button class="menu-toggle" type="button"
+                aria-label="Open navigation menu"
+                aria-controls="mobile-navigation"
+                onclick="this.nextElementSibling && (this.nextElementSibling.style.display='flex')">
+                ☰
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <main>
+        <section class="hero" id="home">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <span class="eyebrow">Your future starts here</span>
+                    <h1>Find a job that fits <span>your future.</span></h1>
+                    <p>
+                        Explore opportunities, connect with great companies, and take
+                        the next step in your career. Apni skills ke according sahi
+                        opportunity yahin se discover karein.
+                    </p>
+
+                    <form class="search-box" action="#jobs" method="get">
+                        <div class="search-field">
+                            <label for="keyword">Job title or keyword</label>
+                            <input id="keyword" name="keyword"
+                                type="search" placeholder="e.g. Web Developer">
+                        </div>
+
+                        <div class="search-field">
+                            <label for="location">Location</label>
+                            <input id="location" name="location"
+                                type="text" placeholder="e.g. Delhi, Remote">
+                        </div>
+
+                        <button class="btn" type="submit">Search Jobs →</button>
+                    </form>
+
+                    <p class="popular-searches">
+                        Popular:
+                        <a href="#jobs">Developer</a>
+                        <a href="#jobs">Designer</a>
+                        <a href="#jobs">Marketing</a>
+                    </p>
+                </div>
+
+                <div class="hero-visual" aria-label="Example job opportunities">
+                    <div class="visual-card">
+                        <div class="visual-top">
+                            <h3>Recommended Jobs</h3>
+                            <span class="live-tag">Featured</span>
+                        </div>
+
+                        <div class="mini-job">
+                            <div class="company-icon">T</div>
+                            <div>
+                                <h4>Frontend Developer</h4>
+                                <p>Tech Solutions · Remote</p>
+                            </div>
+                        </div>
+
+                        <div class="mini-job">
+                            <div class="company-icon">D</div>
+                            <div>
+                                <h4>UI/UX Designer</h4>
+                                <p>Design Studio · Hybrid</p>
+                            </div>
+                        </div>
+
+                        <div class="mini-job">
+                            <div class="company-icon">M</div>
+                            <div>
+                                <h4>Marketing Executive</h4>
+                                <p>MarketPro · Full-time</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="floating-note">
+                        <strong>Keep growing ✦</strong>
+                        <span>A better career begins with a step.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <section class="stats" aria-label="CareerNest platform highlights">
+            <div class="container stats-grid">
+                <div class="stat">
+                    <h3>500+</h3>
+                    <p>Example job listings</p>
+                </div>
+                <div class="stat">
+                    <h3>100+</h3>
+                    <p>Company profiles</p>
+                </div>
+                <div class="stat">
+                    <h3>20+</h3>
+                    <p>Career categories</p>
+                </div>
+                <div class="stat">
+                    <h3>24/7</h3>
+                    <p>Explore opportunities</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories -->
+        <section class="section" id="categories">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="eyebrow">Explore your options</span>
+                    <h2>Find your field</h2>
+                    <p>
+                        Different skills, different paths. Apni interest aur experience
+                        ke hisaab se career opportunities explore karein.
+                    </p>
+                </div>
+
+                <div class="categories-grid">
+                    <a href="#jobs" class="category-card">
+                        <div class="category-icon">⌘</div>
+                        <h3>Technology</h3>
+                        <p>Development, software and IT support roles.</p>
+                        <span class="job-count">Explore technology →</span>
+                    </a>
+
+                    <a href="#jobs" class="category-card">
+                        <div class="category-icon">✎</div>
+                        <h3>Design & Creative</h3>
+                        <p>Turn your creative ideas into meaningful work.</p>
+                        <span class="job-count">Explore creative roles →</span>
+                    </a>
+
+                    <a href="#jobs" class="category-card">
+                        <div class="category-icon">↗</div>
+                        <h3>Marketing</h3>
+                        <p>Build brands and connect with audiences.</p>
+                        <span class="job-count">Explore marketing →</span>
+                    </a>
+
+                    <a href="#jobs" class="category-card">
+                        <div class="category-icon">▤</div>
+                        <h3>Business & Finance</h3>
+                        <p>Discover opportunities in operations and finance.</p>
+                        <span class="job-count">Explore business roles →</span>
+                    </a>
+
+                    <a href="#jobs" class="category-card">
+                        <div class="category-icon">♧</div>
+                        <h3>Human Resources</h3>
+                        <p>Help teams grow and build better workplaces.</p>
+                        <span class="job-count">Explore HR roles →</span>
+                    </a>
+
+                    <a href="#jobs" class="category-card">
+                        <div class="category-icon">▣</div>
+                        <h3>Customer Support</h3>
+                        <p>Make a difference through customer experiences.</p>
+                        <span class="job-count">Explore support roles →</span>
+                    </a>
+
+                    <a href="#jobs" class="category-card">
+                        <div class="category-icon">⌂</div>
+                        <h3>Remote Jobs</h3>
+                        <p>Find flexible roles you can do from anywhere.</p>
+                        <span class="job-count">Explore remote roles →</span>
+                    </a>
+
+                    <a href="#jobs" class="category-card">
+                        <div class="category-icon">✦</div>
+                        <h3>Internships</h3>
+                        <p>Start learning through real-world experience.</p>
+                        <span class="job-count">Explore internships →</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Job Listings -->
+        <section class="section jobs-section" id="jobs">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="eyebrow">Opportunities for you</span>
+                    <h2>Featured job openings</h2>
+                    <p>
+                        Take a look at these sample listings and discover the kind
+                        of role that matches your goals.
+                    </p>
+                </div>
+
+                <div class="jobs-layout">
+                    <aside class="filter-panel">
+                        <h3>Refine your search</h3>
+
+                        <div class="filter-group">
+                            <label for="job-type">Job type</label>
+                            <select id="job-type" name="job-type">
+                                <option>All job types</option>
+                                <option>Full-time</option>
+                                <option>Part-time</option>
+                                <option>Internship</option>
+                                <option>Contract</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="job-location">Work location</label>
+                            <select id="job-location" name="job-location">
+                                <option>All locations</option>
+                                <option>Remote</option>
+                                <option>On-site</option>
+                                <option>Hybrid</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="experience">Experience</label>
+                            <select id="experience" name="experience">
+                                <option>Any experience</option>
+                                <option>Fresher</option>
+                                <option>1–3 years</option>
+                                <option>3+ years</option>
+                            </select>
+                        </div>
+
+                        <p style="font-size:.82rem;color:#718096;">
+                            Filters are visual examples. Live filtering requires
+                            JavaScript or a connected backend.
+                        </p>
+                    </aside>
+
+                    <div>
+                        <div class="jobs-top">
+                            <div>
+                                <h3>Latest opportunities</h3>
+                                <p>Sample listings for website demonstration</p>
+                            </div>
+                            <a href="#recruiters" class="btn btn-outline">For Employers</a>
+                        </div>
+
+                        <div class="job-list">
+                            <article class="job-card">
+                                <div class="job-header">
+                                    <div class="company-icon">T</div>
+                                    <div class="job-info">
+                                        <h3>Frontend Developer</h3>
+                                        <p class="company">Tech Solutions</p>
+                                        <span class="job-tag">Full-time</span>
+                                    </div>
+                                </div>
+                                <div class="job-meta">
+                                    <span>⌖ Remote</span>
+                                    <span>◷ 1–2 years</span>
+                                    <span>◇ React · CSS</span>
+                                </div>
+                                <div class="job-footer">
+                                    <div>
+                                        <strong>₹4–7 LPA</strong>
+                                        <small> · Sample salary</small>
+                                    </div>
+                                    <a href="#contact" class="btn">View Details →</a>
+                                </div>
+                            </article>
+
+                            <article class="job-card">
+                                <div class="job-header">
+                                    <div class="company-icon">D</div>
+                                    <div class="job-info">
+                                        <h3>UI/UX Designer</h3>
+                                        <p class="company">Design Studio</p>
+                                        <span class="job-tag">Hybrid</span>
+                                    </div>
+                                </div>
+                                <div class="job-meta">
+                                    <span>⌖ Gurugram</span>
+                                    <span>◷ 1–3 years</span>
+                                    <span>◇ Figma · UI Design</span>
+                                </div>
+                                <div class="job-footer">
+                                    <div>
+                                        <strong>₹5–8 LPA</strong>
+                                        <small> · Sample salary</small>
+                                    </div>
+                                    <a href="#contact" class="btn">View Details →</a>
+                                </div>
+                            </article>
+
+                            <article class="job-card">
+                                <div class="job-header">
+                                    <div class="company-icon">M</div>
+                                    <div class="job-info">
+                                        <h3>Digital Marketing Executive</h3>
+                                        <p class="company">MarketPro</p>
+                                        <span class="job-tag">Full-time</span>
+                                    </div>
+                                </div>
+                                <div class="job-meta">
+                                    <span>⌖ Delhi</span>
+                                    <span>◷ Fresher welcome</span>
+                                    <span>◇ SEO · Content</span>
+                                </div>
+                                <div class="job-footer">
+                                    <div>
+                                        <strong>₹3–5 LPA</strong>
+                                        <small> · Sample salary</small>
+                                    </div>
+                                    <a href="#contact" class="btn">View Details →</a>
+                                </div>
+                            </article>
+
+                            <article class="job-card">
+                                <div class="job-header">
+                                    <div class="company-icon">W</div>
+                                    <div class="job-info">
+                                        <h3>MERN Stack Intern</h3>
+                                        <p class="company">WebCraft Labs</p>
+                                        <span class="job-tag">Internship</span>
+                                    </div>
+                                </div>
+                                <div class="job-meta">
+                                    <span>⌖ Remote</span>
+                                    <span>◷ Fresher</span>
+                                    <span>◇ MongoDB · Express · React · Node</span>
+                                </div>
+                                <div class="job-footer">
+                                    <div>
+                                        <strong>₹10k–15k/month</strong>
+                                        <small> · Sample stipend</small>
+                                    </div>
+                                    <a href="#contact" class="btn">View Details →</a>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About and Benefits -->
+        <section class="section" id="about">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="eyebrow">Why CareerNest?</span>
+                    <h2>A simpler way to move forward</h2>
+                    <p>
+                        Job search ko thoda easier banane ke liye, CareerNest brings
+                        useful career resources and opportunities together.
+                    </p>
+                </div>
+
+                <div class="benefits-grid">
+                    <article class="benefit-card">
+                        <div class="category-icon">⌕</div>
+                        <h3>Explore relevant jobs</h3>
+                        <p>
+                            Discover different roles and industries. Find opportunities
+                            that align with your skills and career interests.
+                        </p>
+                    </article>
+
+                    <article class="benefit-card">
+                        <div class="category-icon">♧</div>
+                        <h3>Grow your skills</h3>
+                        <p>
+                            Learn what employers look for, improve your resume, and
+                            prepare confidently for your next interview.
+                        </p>
+                    </article>
+
+                    <article class="benefit-card">
+                        <div class="category-icon">↗</div>
+                        <h3>Connect with employers</h3>
+                        <p>
+                            Make your next career move with a clear understanding of
+                            the role, skills, and experience you want to build.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recruiter CTA -->
+        <section class="recruiter-section" id="recruiters">
+            <div class="container">
+                <div class="recruiter-box">
+                    <div class="recruiter-content">
+                        <span class="eyebrow">For recruiters</span>
+                        <h2>Meet the people who can move your business forward.</h2>
+                        <p>
+                            Find skilled candidates and make your hiring process
+                            more focused. Apni team ke liye right talent discover karein.
+                        </p>
+                    </div>
+                    <a href="#contact" class="btn">Start Hiring →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="newsletter">
+            <div class="container newsletter-inner">
+                <div>
+                    <h2>Keep your career moving</h2>
+                    <p>Get career tips and opportunities delivered to your inbox.</p>
+                </div>
+
+                <form class="newsletter-form" action="#contact" method="get">
+                    <label for="newsletter-email" style="position:absolute;left:-9999px;">
+                        Email address
+                    </label>
+                    <input id="newsletter-email" type="email" name="email"
+                        placeholder="Enter your email address" required>
+                    <button class="btn" type="submit">Stay Updated</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="#home" class="logo">Career<span>Nest</span></a>
+                    <p>
+                        Helping job seekers explore possibilities and take the next
+                        step toward a career they feel good about.
+                    </p>
+                </div>
+
+                <div>
+                    <h3>For Candidates</h3>
+                    <ul>
+                        <li><a href="#jobs">Browse Jobs</a></li>
+                        <li><a href="#categories">Job Categories</a></li>
+                        <li><a href="#about">Career Advice</a></li>
+                        <li><a href="#jobs">Internships</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3>For Employers</h3>
+                    <ul>
+                        <li><a href="#recruiters">Post a Job</a></li>
+                        <li><a href="#recruiters">Find Candidates</a></li>
+                        <li><a href="#contact">Recruiter Support</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3>CareerNest</h3>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#contact">Privacy Policy</a></li>
+                        <li><a href="#contact">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 CareerNest. All rights reserved. | Website demo project</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
