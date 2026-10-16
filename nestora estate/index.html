@@ -1,573 +1,234 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Explore homes, apartments and villas for sale and rent with Nestora Estates.">
-<title>Nestora Estates | Find Your Place</title>
+<title>Nestora Estates | Find Your Home</title>
 
 <style>
-:root {
-    --navy: #142b45;
-    --navy2: #203e5d;
-    --teal: #16a085;
-    --teal-dark: #0d806b;
-    --bg: #f5f8fa;
-    --white: #fff;
-    --text: #344054;
-    --muted: #718096;
-    --border: #e3eaf0;
-    --shadow: 0 12px 35px rgba(20,43,69,.09);
-    --radius: 16px;
-}
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-html {
     scroll-behavior: smooth;
-    scroll-padding-top: 90px;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--text);
-    background: var(--bg);
+    font-family: Arial, sans-serif;
+    color: #26352d;
+    background: #fff;
     line-height: 1.6;
 }
 
 a {
-    color: inherit;
     text-decoration: none;
-}
-
-button, input, select, textarea {
-    font: inherit;
-}
-
-button, a, summary {
-    -webkit-tap-highlight-color: transparent;
-}
-
-button {
-    cursor: pointer;
-}
-
-img {
-    display: block;
-    max-width: 100%;
-}
-
-.container {
-    width: min(1180px, 90%);
-    margin: auto;
-}
-
-.section {
-    padding: 82px 0;
-}
-
-.section-heading {
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
-    gap: 20px;
-    margin-bottom: 34px;
-}
-
-.section-heading h2 {
-    color: var(--navy);
-    font-size: clamp(1.8rem, 3vw, 2.55rem);
-    line-height: 1.2;
-    margin-bottom: 10px;
-    letter-spacing: -.7px;
-}
-
-.section-heading p {
-    color: var(--muted);
-    max-width: 580px;
-}
-
-.eyebrow {
-    color: var(--teal-dark);
-    font-size: .8rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1.7px;
-    display: inline-block;
-    margin-bottom: 12px;
+    color: inherit;
 }
 
 .btn {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    background: var(--teal);
-    color: var(--white);
-    border: 1px solid var(--teal);
-    border-radius: 9px;
-    padding: 12px 20px;
-    font-weight: 700;
-    transition: .25s ease;
+    display: inline-block;
+    padding: 12px 22px;
+    background: #315b45;
+    color: white;
+    border-radius: 5px;
+    transition: .3s;
 }
 
 .btn:hover {
-    background: var(--teal-dark);
-    border-color: var(--teal-dark);
+    background: #234331;
     transform: translateY(-2px);
 }
 
-.btn-light {
-    background: var(--white);
-    color: var(--navy);
-    border-color: var(--border);
-}
-
-.btn-light:hover {
-    background: var(--navy);
-    color: var(--white);
-    border-color: var(--navy);
-}
-
-.text-link {
-    color: var(--teal-dark);
-    font-weight: 700;
-    white-space: nowrap;
-}
-
-.text-link:hover {
-    text-decoration: underline;
-}
-
-/* Header */
-
-.header {
+header {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(255,255,255,.97);
-    border-bottom: 1px solid var(--border);
-    backdrop-filter: blur(14px);
+    background: white;
+    box-shadow: 0 2px 10px #00000010;
 }
 
 .navbar {
-    min-height: 78px;
+    max-width: 1200px;
+    margin: auto;
+    padding: 16px 5%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 24px;
+    gap: 20px;
 }
 
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--navy);
-    font-size: 1.4rem;
-    font-weight: 800;
-    letter-spacing: -.7px;
-    white-space: nowrap;
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+    color: #315b45;
 }
 
-.brand-icon {
-    width: 42px;
-    height: 42px;
-    display: grid;
-    place-items: center;
-    background: var(--navy);
-    color: var(--white);
-    border-radius: 12px;
-    font-size: 1.4rem;
-}
-
-.brand span span {
-    color: var(--teal);
+.logo span {
+    color: #b18b5e;
 }
 
 .nav-links {
     display: flex;
-    align-items: center;
-    gap: 27px;
-    list-style: none;
-}
-
-.nav-links a {
-    color: var(--text);
-    font-size: .92rem;
-    font-weight: 600;
-    transition: color .2s;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-    color: var(--teal-dark);
-}
-
-.nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.menu-check {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    opacity: 0;
-    pointer-events: none;
-}
-
-.menu-label {
-    display: none;
-    padding: 7px 12px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: var(--navy);
-    font-size: 1.4rem;
-    cursor: pointer;
-}
-
-/* Hero */
-
-.hero {
-    min-height: 590px;
-    position: relative;
-    isolation: isolate;
-    display: flex;
-    align-items: center;
-    padding: 80px 0 100px;
-    color: var(--white);
-    background: var(--navy);
-    overflow: hidden;
-}
-
-.hero::before {
-    content: "";
-    position: absolute;
-    z-index: -2;
-    inset: 0;
-    background:
-        url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=85")
-        center 55% / cover no-repeat;
-    animation: heroZoom 16s ease-in-out infinite alternate;
-}
-
-.hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: linear-gradient(
-        90deg,
-        rgba(10,28,46,.93) 0%,
-        rgba(10,28,46,.79) 48%,
-        rgba(10,28,46,.22) 100%
-    );
-}
-
-.hero-content {
-    max-width: 730px;
-    animation: rise .8s ease both;
-}
-
-.hero .eyebrow {
-    color: #8ce4d2;
-}
-
-.hero h1 {
-    font-size: clamp(2.6rem, 5.4vw, 4.7rem);
-    line-height: 1.08;
-    letter-spacing: -2px;
-    margin-bottom: 22px;
-}
-
-.hero h1 span {
-    color: #7de0ca;
-}
-
-.hero-content > p {
-    max-width: 570px;
-    font-size: 1.04rem;
-    color: #e0e8ef;
-    margin-bottom: 30px;
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-bottom: 40px;
-}
-
-.hero .btn-light {
-    border-color: rgba(255,255,255,.5);
-}
-
-.hero .btn-light:hover {
-    background: var(--white);
-    color: var(--navy);
-}
-
-.hero-trust {
-    display: flex;
-    gap: 25px;
-    flex-wrap: wrap;
-    color: #e0e8ef;
-    font-size: .88rem;
-}
-
-.hero-trust strong {
-    color: var(--white);
-}
-
-/* Search panel */
-
-.search-wrap {
-    position: relative;
-    z-index: 3;
-    margin-top: -58px;
-}
-
-.search-panel {
-    background: var(--white);
-    padding: 22px;
-    border-radius: 15px;
-    box-shadow: var(--shadow);
-    border: 1px solid var(--border);
-}
-
-.search-tabs {
-    display: flex;
-    gap: 7px;
-    margin-bottom: 19px;
-}
-
-.search-tabs a {
-    padding: 8px 21px;
-    color: var(--muted);
-    border-radius: 7px;
-    font-weight: 700;
-}
-
-.search-tabs a:first-child,
-.search-tabs a:hover {
-    background: #e8f7f3;
-    color: var(--teal-dark);
-}
-
-.search-grid {
-    display: grid;
-    grid-template-columns: 1.15fr 1fr 1fr 1fr auto;
-    gap: 12px;
-    align-items: end;
-}
-
-.field label {
-    display: block;
-    color: var(--navy);
-    font-size: .82rem;
-    font-weight: 700;
-    margin-bottom: 7px;
-}
-
-.field input,
-.field select {
-    width: 100%;
-    min-width: 0;
-    height: 47px;
-    padding: 0 12px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    background: var(--white);
-    color: var(--text);
-    outline: none;
-}
-
-.field input:focus,
-.field select:focus,
-.contact-form input:focus,
-.contact-form textarea:focus {
-    border-color: var(--teal);
-    box-shadow: 0 0 0 3px rgba(22,160,133,.12);
-}
-
-/* Trust strip */
-
-.trust-strip {
-    padding: 36px 0;
-    border-bottom: 1px solid var(--border);
-    background: var(--white);
-}
-
-.trust-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 22px;
-}
-
-.trust-item {
-    display: flex;
-    align-items: center;
-    gap: 13px;
-}
-
-.trust-icon {
-    width: 46px;
-    height: 46px;
-    flex-shrink: 0;
-    display: grid;
-    place-items: center;
-    border-radius: 12px;
-    background: #e8f7f3;
-    color: var(--teal-dark);
-    font-size: 1.35rem;
-}
-
-.trust-item h3 {
-    color: var(--navy);
-    font-size: .95rem;
-}
-
-.trust-item p {
-    color: var(--muted);
-    font-size: .8rem;
-}
-
-/* Property cards */
-
-.properties {
-    background: var(--bg);
-}
-
-.property-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 24px;
 }
 
-.property-card {
+.nav-links a:hover {
+    color: #b18b5e;
+}
+
+.tagline {
+    color: #a47b4d;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+/* Hero */
+.hero {
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    padding: 60px 8%;
+    color: white;
+    background:
+        linear-gradient(90deg, #14251fe8, #14251f55),
+        url("https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1800&q=85")
+        center/cover no-repeat;
+}
+
+.hero-content {
+    max-width: 550px;
+    animation: fadeUp .8s ease;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 5vw, 58px);
+    line-height: 1.15;
+    margin-bottom: 18px;
+}
+
+.hero .tagline {
+    color: #e3c29a;
+}
+
+.hero-content p:not(.tagline) {
+    color: #eee;
+    margin-bottom: 25px;
+}
+
+/* Search */
+.search-section {
     position: relative;
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
+    width: 90%;
+    max-width: 1050px;
+    margin: -30px auto 0;
+    padding: 25px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 8px 30px #00000012;
+}
+
+.search-section h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.search-box {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr auto;
+    gap: 12px;
+}
+
+.search-box input,
+.search-box select {
+    width: 100%;
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: white;
+}
+
+.search-box button {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 5px;
+    background: #315b45;
+    color: white;
+    cursor: pointer;
+}
+
+/* Common Sections */
+.section {
+    max-width: 1200px;
+    margin: auto;
+    padding: 80px 5%;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-heading h2,
+.about h2,
+.contact h2 {
+    font-size: clamp(27px, 3vw, 36px);
+    margin-bottom: 10px;
+}
+
+.section-heading p:last-child,
+.contact p {
+    color: #777;
+}
+
+/* Properties */
+.property-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.property-card {
     overflow: hidden;
-    transition: transform .3s ease, box-shadow .3s ease;
+    border: 1px solid #eee;
+    border-radius: 9px;
+    transition: .3s;
 }
 
 .property-card:hover {
-    transform: translateY(-7px);
-    box-shadow: var(--shadow);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px #00000012;
 }
 
-.property-image {
-    position: relative;
-    height: 235px;
-    overflow: hidden;
-    background: #dce7e8;
-}
-
-.property-image img {
+.property-card img {
     width: 100%;
-    height: 100%;
+    height: 220px;
     object-fit: cover;
-    transition: transform .55s ease;
 }
 
-.property-card:hover .property-image img {
-    transform: scale(1.06);
+.property-info {
+    padding: 20px;
 }
 
-.property-badge {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    background: var(--teal);
-    color: var(--white);
-    padding: 6px 11px;
-    border-radius: 6px;
-    font-size: .75rem;
-    font-weight: 800;
+.property-type {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #edf3ee;
+    color: #315b45;
+    border-radius: 4px;
+    font-size: 12px;
 }
 
-.property-badge.rent {
-    background: var(--navy);
+.property-info h3 {
+    font-size: 19px;
+    margin: 12px 0 5px;
 }
 
-.favorite {
-    position: absolute;
-    top: 13px;
-    right: 13px;
-}
-
-.favorite input {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-}
-
-.favorite label {
-    width: 38px;
-    height: 38px;
-    display: grid;
-    place-items: center;
-    background: rgba(255,255,255,.96);
-    color: var(--navy);
-    border-radius: 50%;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: .2s;
-}
-
-.favorite input:checked + label {
-    background: #fff0f0;
-    color: #d9415d;
-}
-
-.favorite input:checked + label::after {
-    content: "♥";
-}
-
-.favorite label::after {
-    content: "♡";
-}
-
-.property-content {
-    padding: 22px;
-}
-
-.property-location {
-    color: var(--muted);
-    font-size: .83rem;
-    margin-bottom: 7px;
-}
-
-.property-content h3 {
-    color: var(--navy);
-    font-size: 1.15rem;
-    line-height: 1.35;
-    margin-bottom: 8px;
-}
-
-.property-description {
-    color: var(--muted);
-    font-size: .87rem;
-    margin-bottom: 17px;
-}
-
-.property-features {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    padding: 14px 0;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    color: var(--text);
-    font-size: .81rem;
+.location {
+    font-size: 13px;
+    color: #777;
 }
 
 .property-bottom {
@@ -575,472 +236,80 @@ img {
     justify-content: space-between;
     align-items: center;
     gap: 10px;
-    padding-top: 17px;
+    margin-top: 18px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
 }
 
-.property-price {
-    color: var(--navy);
-    font-size: 1.22rem;
-    font-weight: 800;
+.property-bottom strong {
+    color: #315b45;
+    font-size: 18px;
 }
 
-.property-price small {
-    color: var(--muted);
-    font-size: .76rem;
-    font-weight: 400;
-}
-
-.arrow-btn {
-    width: 40px;
-    height: 40px;
-    display: grid;
-    place-items: center;
-    background: #e8f7f3;
-    color: var(--teal-dark);
-    border-radius: 10px;
-    font-size: 1.2rem;
-    transition: .2s;
-}
-
-.arrow-btn:hover {
-    background: var(--teal);
-    color: var(--white);
-}
-
-.center-action {
-    text-align: center;
-    margin-top: 36px;
-}
-
-/* Property types */
-
-.types-section {
-    background: var(--white);
-}
-
-.types-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-}
-
-.type-card {
-    position: relative;
-    min-height: 200px;
-    border-radius: 14px;
-    overflow: hidden;
-    display: flex;
-    align-items: end;
-    padding: 23px;
-    color: var(--white);
-    background: var(--navy);
-    isolation: isolate;
-}
-
-.type-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -2;
-    background: var(--type-image) center / cover;
-    transition: transform .5s;
-}
-
-.type-card::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: linear-gradient(transparent 5%, rgba(10,28,46,.85));
-}
-
-.type-card:hover::before {
-    transform: scale(1.08);
-}
-
-.type-card h3 {
-    font-size: 1.2rem;
-}
-
-.type-card p {
-    color: #e1e8ee;
-    font-size: .84rem;
+.property-bottom a {
+    color: #315b45;
+    font-weight: bold;
 }
 
 /* About */
-
-.about-grid {
+.about {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    gap: 65px;
+    gap: 50px;
 }
 
-.about-visual {
-    position: relative;
-    padding: 0 25px 25px 0;
-}
-
-.about-visual img {
+.about img {
     width: 100%;
-    height: 420px;
+    height: 350px;
     object-fit: cover;
-    border-radius: 18px;
+    border-radius: 10px;
 }
 
-.about-note {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    background: var(--white);
-    box-shadow: var(--shadow);
-    border-radius: 12px;
-    padding: 20px 24px;
-    max-width: 225px;
-}
-
-.about-note strong {
-    display: block;
-    color: var(--navy);
-    font-size: 1.6rem;
-}
-
-.about-note span {
-    color: var(--muted);
-    font-size: .85rem;
-}
-
-.about-content h2 {
-    color: var(--navy);
-    font-size: clamp(2rem, 3.5vw, 2.8rem);
-    line-height: 1.2;
-    margin-bottom: 20px;
-}
-
-.about-content > p {
-    color: var(--muted);
-    margin-bottom: 23px;
-}
-
-.about-points {
-    list-style: none;
-    display: grid;
-    gap: 14px;
-    margin-bottom: 27px;
-}
-
-.about-points li {
-    color: var(--navy);
-    font-weight: 600;
-}
-
-.about-points li span {
-    display: inline-grid;
-    place-items: center;
-    width: 26px;
-    height: 26px;
-    margin-right: 9px;
-    background: #e8f7f3;
-    color: var(--teal-dark);
-    border-radius: 50%;
-}
-
-/* Process */
-
-.process-section {
-    background: #edf4f6;
-}
-
-.process-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 23px;
-}
-
-.process-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    padding: 28px;
-    border-radius: 14px;
-    transition: transform .25s, box-shadow .25s;
-}
-
-.process-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow);
-}
-
-.process-number {
-    width: 48px;
-    height: 48px;
-    display: grid;
-    place-items: center;
-    border-radius: 12px;
-    background: var(--navy);
-    color: var(--white);
-    font-size: 1.15rem;
-    font-weight: 800;
-    margin-bottom: 20px;
-}
-
-.process-card h3 {
-    color: var(--navy);
-    margin-bottom: 10px;
-}
-
-.process-card p {
-    color: var(--muted);
-    font-size: .92rem;
-}
-
-/* Testimonials */
-
-.testimonial-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
-}
-
-.testimonial {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 27px;
-}
-
-.stars {
-    color: #e6a52d;
-    letter-spacing: 3px;
-    margin-bottom: 13px;
-}
-
-.testimonial > p {
-    color: var(--text);
-    font-size: .93rem;
-    margin-bottom: 22px;
-}
-
-.person {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.avatar {
-    width: 44px;
-    height: 44px;
-    display: grid;
-    place-items: center;
-    background: #e5f3f2;
-    color: var(--teal-dark);
-    border-radius: 50%;
-    font-weight: 800;
-}
-
-.person h4 {
-    color: var(--navy);
-    font-size: .9rem;
-}
-
-.person span {
-    color: var(--muted);
-    font-size: .8rem;
+.about-content p:not(.tagline) {
+    color: #777;
+    margin: 15px 0 25px;
 }
 
 /* Contact */
-
-.contact-section {
-    background: var(--white);
+.contact {
+    max-width: none;
+    text-align: center;
+    background: #f6f8f5;
 }
 
-.contact-grid {
-    display: grid;
-    grid-template-columns: .85fr 1.15fr;
-    gap: 45px;
-}
-
-.contact-copy {
-    background: var(--navy);
-    color: var(--white);
-    padding: 35px;
-    border-radius: 17px;
-}
-
-.contact-copy h2 {
-    font-size: 2rem;
-    line-height: 1.2;
-    margin-bottom: 15px;
-}
-
-.contact-copy > p {
-    color: #d0dce7;
-    margin-bottom: 28px;
-}
-
-.contact-detail {
-    padding: 16px 0;
-    border-top: 1px solid rgba(255,255,255,.15);
-}
-
-.contact-detail strong {
-    display: block;
-    margin-bottom: 3px;
-}
-
-.contact-detail span {
-    color: #d0dce7;
-    font-size: .9rem;
-}
-
-.contact-form {
-    padding: 8px 0;
-}
-
-.contact-form h3 {
-    color: var(--navy);
-    font-size: 1.5rem;
-    margin-bottom: 22px;
-}
-
-.form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 17px;
-}
-
-.form-field.full {
-    grid-column: 1 / -1;
-}
-
-.form-field label {
-    display: block;
-    color: var(--navy);
-    font-size: .85rem;
-    font-weight: 700;
-    margin-bottom: 7px;
-}
-
-.contact-form input,
-.contact-form select,
-.contact-form textarea {
-    width: 100%;
-    padding: 12px 13px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    outline: none;
-    background: var(--white);
-    color: var(--text);
-}
-
-.contact-form textarea {
-    resize: vertical;
-    min-height: 115px;
-}
-
-/* CTA */
-
-.cta-section {
-    padding: 30px 0 80px;
-}
-
-.cta-box {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    padding: 55px;
-    background: var(--navy);
-    color: var(--white);
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 25px;
-}
-
-.cta-box::after {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    width: 300px;
-    height: 300px;
-    right: 15%;
-    top: -180px;
-    border: 45px solid rgba(255,255,255,.05);
-    border-radius: 50%;
-}
-
-.cta-box h2 {
-    font-size: clamp(1.8rem, 3vw, 2.5rem);
-    line-height: 1.2;
-    margin-bottom: 12px;
-}
-
-.cta-box p {
-    color: #d0dce7;
+.contact p {
+    margin: 12px auto 25px;
 }
 
 /* Footer */
-
-.footer {
-    background: #0e2135;
-    color: #c4d1df;
-    padding: 55px 0 22px;
-}
-
-.footer-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
-    gap: 35px;
-    padding-bottom: 38px;
-}
-
-.footer .brand {
-    color: var(--white);
-    margin-bottom: 15px;
-    display: inline-flex;
-}
-
-.footer-about p {
-    max-width: 310px;
-    font-size: .88rem;
-    color: #b6c4d2;
-}
-
-.footer h3 {
-    color: var(--white);
-    font-size: 1rem;
-    margin-bottom: 17px;
-}
-
-.footer ul {
-    list-style: none;
-    display: grid;
-    gap: 11px;
-}
-
-.footer li a {
-    font-size: .88rem;
-    transition: color .2s;
-}
-
-.footer li a:hover {
-    color: #7de0ca;
-}
-
-.footer-bottom {
-    border-top: 1px solid #2c4156;
-    padding-top: 20px;
+footer {
+    padding: 35px 5%;
     text-align: center;
-    color: #aabaca;
-    font-size: .82rem;
+    background: #203b2d;
+    color: white;
 }
 
-/* Animations */
+footer .logo {
+    color: white;
+}
 
-@keyframes rise {
+footer p {
+    margin-top: 8px;
+    color: #d7ded9;
+    font-size: 14px;
+}
+
+footer .copyright {
+    margin-top: 20px;
+    font-size: 12px;
+}
+
+/* Animation */
+@keyframes fadeUp {
     from {
         opacity: 0;
-        transform: translateY(24px);
+        transform: translateY(20px);
     }
     to {
         opacity: 1;
@@ -1048,241 +317,75 @@ img {
     }
 }
 
-@keyframes heroZoom {
-    from { transform: scale(1); }
-    to { transform: scale(1.06); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-        transition-duration: .01ms !important;
-    }
-}
-
 /* Tablet */
-
-@media (max-width: 1000px) {
-    .nav-links {
-        gap: 16px;
+@media (max-width: 900px) {
+    .navbar {
+        flex-wrap: wrap;
     }
 
-    .nav-actions .btn-light {
-        display: none;
-    }
-
-    .search-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .search-grid .btn {
-        min-height: 47px;
+    .search-box {
+        grid-template-columns: 1fr 1fr;
     }
 
     .property-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .types-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .trust-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .about-grid {
-        gap: 35px;
-    }
-
-    .footer-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 /* Mobile */
-
-@media (max-width: 760px) {
+@media (max-width: 600px) {
     .navbar {
-        min-height: 72px;
-        flex-wrap: wrap;
-        padding: 12px 0;
-        gap: 12px;
+        justify-content: center;
+        padding: 15px 4%;
     }
 
-    .menu-label {
-        display: block;
-        order: 3;
-    }
-
-    .nav-actions {
-        margin-left: auto;
-        order: 2;
-    }
-
-    .nav-actions .btn {
-        padding: 9px 12px;
-        font-size: .83rem;
+    .logo {
+        width: 100%;
+        text-align: center;
     }
 
     .nav-links {
-        display: none;
-        order: 4;
-        flex-basis: 100%;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-        padding: 8px 0;
-    }
-
-    .nav-links a {
-        display: block;
-        padding: 10px 5px;
-    }
-
-    .menu-check:checked ~ .nav-links {
-        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px 16px;
+        font-size: 14px;
     }
 
     .hero {
-        min-height: 540px;
-        padding: 70px 0 95px;
+        min-height: 420px;
+        padding: 50px 6%;
     }
 
-    .hero h1 {
-        letter-spacing: -1px;
+    .search-section {
+        margin-top: 20px;
     }
 
-    .hero-trust {
-        gap: 12px 20px;
-    }
-
-    .search-wrap {
-        margin-top: -48px;
+    .search-box,
+    .property-grid,
+    .about {
+        grid-template-columns: 1fr;
     }
 
     .section {
-        padding: 62px 0;
+        padding: 55px 6%;
     }
 
-    .section-heading {
-        align-items: flex-start;
-        flex-direction: column;
+    .property-card img {
+        height: 230px;
     }
 
-    .about-grid,
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .about-visual img {
-        height: 340px;
-    }
-
-    .process-grid,
-    .testimonial-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .cta-box {
-        align-items: flex-start;
-        flex-direction: column;
-        padding: 35px 28px;
+    .about img {
+        height: 260px;
     }
 }
 
-/* Small phones */
-
-@media (max-width: 480px) {
-    .container {
-        width: 92%;
-    }
-
-    .brand {
-        font-size: 1.2rem;
-        gap: 7px;
-    }
-
-    .brand-icon {
-        width: 36px;
-        height: 36px;
-    }
-
-    .nav-actions .btn {
-        font-size: .78rem;
-        padding: 8px 10px;
-    }
-
-    .hero h1 {
-        font-size: 2.55rem;
-    }
-
-    .hero-content > p {
-        font-size: .95rem;
-    }
-
-    .hero-buttons .btn {
-        width: 100%;
-    }
-
-    .hero-trust {
-        flex-direction: column;
-        gap: 8px;
-    }
-
-    .search-panel {
-        padding: 16px;
-    }
-
-    .search-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .search-tabs a {
-        padding: 7px 15px;
-    }
-
-    .trust-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .property-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .property-image {
-        height: 240px;
-    }
-
-    .types-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .type-card {
-        min-height: 180px;
-    }
-
-    .form-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .form-field.full {
-        grid-column: auto;
-    }
-
-    .contact-copy {
-        padding: 27px;
-    }
-
-    .cta-box {
-        padding: 30px 23px;
-    }
-
-    .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 28px;
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
     }
 }
 </style>
@@ -1290,710 +393,151 @@ img {
 
 <body>
 
-<!-- HEADER -->
-<header class="header">
-    <div class="container navbar">
+<!-- Navigation -->
+<header>
+    <nav class="navbar">
+        <a href="#home" class="logo">Nestora<span> Estates</span></a>
 
-        <a href="#home" class="brand">
-            <span class="brand-icon">⌂</span>
-            <span>Nestora <span>Estates</span></span>
-        </a>
-
-        <nav aria-label="Main navigation">
-            <ul class="nav-links">
-                <li><a class="active" href="#home">Home</a></li>
-                <li><a href="#properties">Buy</a></li>
-                <li><a href="#properties">Rent</a></li>
-                <li><a href="#types">Property Types</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-
-        <div class="nav-actions">
-            <a href="#contact" class="btn btn-light">Talk to an Agent</a>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#properties">Properties</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
         </div>
-
-        <label class="menu-label" for="menu-check" aria-label="Toggle navigation">☰</label>
-        <input class="menu-check" type="checkbox" id="menu-check">
-
-    </div>
+    </nav>
 </header>
 
-<main>
-
-<!-- HERO -->
+<!-- Hero -->
 <section class="hero" id="home">
-    <div class="container">
-        <div class="hero-content">
-            <span class="eyebrow">Find a place to call home</span>
-
-            <h1>Spaces that fit your life. <span>Homes that feel right.</span></h1>
-
-            <p>
-                Explore thoughtfully selected homes, apartments and investment
-                properties. Aapke budget aur lifestyle ke hisaab se apni perfect
-                property discover karein.
-            </p>
-
-            <div class="hero-buttons">
-                <a href="#properties" class="btn">Explore Properties ↗</a>
-                <a href="#about" class="btn btn-light">Discover Nestora</a>
-            </div>
-
-            <div class="hero-trust">
-                <span>✓ <strong>Verified listings</strong></span>
-                <span>✓ <strong>Helpful guidance</strong></span>
-                <span>✓ <strong>Clear property details</strong></span>
-            </div>
-        </div>
+    <div class="hero-content">
+        <p class="tagline">FIND YOUR PLACE</p>
+        <h1>Find a Home<br>You Will Love.</h1>
+        <p>Explore homes that match your needs and budget.</p>
+        <a href="#properties" class="btn">Explore Properties</a>
     </div>
 </section>
 
-<!-- SEARCH -->
-<div class="container search-wrap">
-    <div class="search-panel">
-        <div class="search-tabs">
-            <a href="#properties">Buy Property</a>
-            <a href="#properties">Rent Property</a>
-        </div>
+<!-- Search -->
+<section class="search-section">
+    <h2>Find Your Property</h2>
 
-        <form class="search-grid" action="#properties" method="get">
-            <div class="field">
-                <label for="location">Location</label>
-                <input id="location" name="location" type="text"
-                    placeholder="City or neighbourhood">
-            </div>
+    <form action="#properties" class="search-box">
+        <input type="text" placeholder="Enter city or location"
+               aria-label="City or location">
 
-            <div class="field">
-                <label for="type">Property type</label>
-                <select id="type" name="type">
-                    <option value="">All property types</option>
-                    <option>House</option>
-                    <option>Apartment</option>
-                    <option>Villa</option>
-                    <option>Plot</option>
-                </select>
-            </div>
+        <select aria-label="Property type">
+            <option value="">Property Type</option>
+            <option>Apartment</option>
+            <option>House</option>
+            <option>Villa</option>
+        </select>
 
-            <div class="field">
-                <label for="budget">Maximum budget</label>
-                <select id="budget" name="budget">
-                    <option value="">Any budget</option>
-                    <option>Under ₹30 lakh</option>
-                    <option>₹30–60 lakh</option>
-                    <option>₹60 lakh–1 crore</option>
-                    <option>Above ₹1 crore</option>
-                </select>
-            </div>
+        <select aria-label="Budget">
+            <option value="">Your Budget</option>
+            <option>Under ₹30 Lakh</option>
+            <option>₹30–60 Lakh</option>
+            <option>Above ₹60 Lakh</option>
+        </select>
 
-            <div class="field">
-                <label for="bedrooms">Bedrooms</label>
-                <select id="bedrooms" name="bedrooms">
-                    <option value="">Any</option>
-                    <option>1 BHK</option>
-                    <option>2 BHK</option>
-                    <option>3 BHK</option>
-                    <option>4+ BHK</option>
-                </select>
-            </div>
+        <button type="submit">Search</button>
+    </form>
+</section>
 
-            <button type="submit" class="btn">⌕ Search</button>
-        </form>
+<!-- Properties -->
+<section class="section" id="properties">
+    <div class="section-heading">
+        <p class="tagline">OUR PROPERTIES</p>
+        <h2>Homes You May Like</h2>
+        <p>Explore options for your next home.</p>
     </div>
-</div>
 
-<!-- TRUST -->
-<section class="trust-strip">
-    <div class="container trust-grid">
+    <div class="property-grid">
 
-        <div class="trust-item">
-            <div class="trust-icon">✓</div>
-            <div>
-                <h3>Verified Details</h3>
-                <p>Make informed property decisions</p>
+        <article class="property-card">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+                 alt="Modern family house">
+
+            <div class="property-info">
+                <span class="property-type">House</span>
+                <h3>Modern Family House</h3>
+                <p class="location">Ludhiana, Punjab</p>
+
+                <div class="property-bottom">
+                    <strong>₹55 Lakh</strong>
+                    <a href="#contact">Enquire</a>
+                </div>
             </div>
-        </div>
+        </article>
 
-        <div class="trust-item">
-            <div class="trust-icon">⌂</div>
-            <div>
-                <h3>More Choices</h3>
-                <p>Homes for different lifestyles</p>
-            </div>
-        </div>
+        <article class="property-card">
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80"
+                 alt="Modern apartment">
 
-        <div class="trust-item">
-            <div class="trust-icon">⌕</div>
-            <div>
-                <h3>Simple Search</h3>
-                <p>Explore with ease</p>
-            </div>
-        </div>
+            <div class="property-info">
+                <span class="property-type">Apartment</span>
+                <h3>Comfortable Apartment</h3>
+                <p class="location">Chandigarh</p>
 
-        <div class="trust-item">
-            <div class="trust-icon">♡</div>
-            <div>
-                <h3>Personal Support</h3>
-                <p>Guidance for your next move</p>
+                <div class="property-bottom">
+                    <strong>₹35 Lakh</strong>
+                    <a href="#contact">Enquire</a>
+                </div>
             </div>
-        </div>
+        </article>
+
+        <article class="property-card">
+            <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80"
+                 alt="Villa with swimming pool">
+
+            <div class="property-info">
+                <span class="property-type">Villa</span>
+                <h3>Spacious Family Villa</h3>
+                <p class="location">Mohali, Punjab</p>
+
+                <div class="property-bottom">
+                    <strong>₹85 Lakh</strong>
+                    <a href="#contact">Enquire</a>
+                </div>
+            </div>
+        </article>
 
     </div>
 </section>
 
-<!-- FEATURED PROPERTIES -->
-<section class="section properties" id="properties">
-    <div class="container">
+<!-- About -->
+<section class="section about" id="about">
+    <div>
+        <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=80"
+             alt="Comfortable home interior">
+    </div>
 
-        <div class="section-heading">
-            <div>
-                <span class="eyebrow">Handpicked for you</span>
-                <h2>Explore featured properties</h2>
-                <p>
-                    Take a closer look at homes with space, comfort and
-                    character. Find the one that feels right for you.
-                </p>
-            </div>
-            <a href="#types" class="text-link">Explore property types →</a>
-        </div>
-
-        <div class="property-grid">
-
-            <!-- Property 1 -->
-            <article class="property-card">
-                <div class="property-image">
-                    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=900&q=80"
-                        alt="Modern family home with landscaped garden" loading="lazy">
-                    <span class="property-badge">For Sale</span>
-                    <div class="favorite">
-                        <input type="checkbox" id="fav1" aria-label="Save Modern Family Home">
-                        <label for="fav1" title="Save property"></label>
-                    </div>
-                </div>
-                <div class="property-content">
-                    <p class="property-location">⌖ Gurugram, Haryana</p>
-                    <h3>Modern Family Home</h3>
-                    <p class="property-description">
-                        A spacious home with a contemporary layout and outdoor space.
-                    </p>
-                    <div class="property-features">
-                        <span>🛏 4 Beds</span>
-                        <span>▧ 3 Baths</span>
-                        <span>▱ 2,400 sqft</span>
-                    </div>
-                    <div class="property-bottom">
-                        <div class="property-price">₹85 lakh</div>
-                        <a class="arrow-btn" href="#contact" aria-label="Ask about Modern Family Home">↗</a>
-                    </div>
-                    <details style="margin-top:15px;color:#718096;font-size:.88rem;">
-                        <summary style="cursor:pointer;color:#10866f;font-weight:700;">View property details</summary>
-                        <p style="padding-top:10px;">Illustrative listing. Ask an agent for actual availability, ownership details and viewing arrangements.</p>
-                    </details>
-                </div>
-            </article>
-
-            <!-- Property 2 -->
-            <article class="property-card">
-                <div class="property-image">
-                    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=80"
-                        alt="Bright luxury apartment interior" loading="lazy">
-                    <span class="property-badge rent">For Rent</span>
-                    <div class="favorite">
-                        <input type="checkbox" id="fav2" aria-label="Save Luxury Apartment">
-                        <label for="fav2" title="Save property"></label>
-                    </div>
-                </div>
-                <div class="property-content">
-                    <p class="property-location">⌖ South Delhi, Delhi</p>
-                    <h3>Luxury City Apartment</h3>
-                    <p class="property-description">
-                        A bright apartment designed for convenient city living.
-                    </p>
-                    <div class="property-features">
-                        <span>🛏 3 Beds</span>
-                        <span>▧ 2 Baths</span>
-                        <span>▱ 1,350 sqft</span>
-                    </div>
-                    <div class="property-bottom">
-                        <div class="property-price">₹32,000 <small>/ month</small></div>
-                        <a class="arrow-btn" href="#contact" aria-label="Ask about Luxury City Apartment">↗</a>
-                    </div>
-                    <details style="margin-top:15px;color:#718096;font-size:.88rem;">
-                        <summary style="cursor:pointer;color:#10866f;font-weight:700;">View property details</summary>
-                        <p style="padding-top:10px;">Illustrative listing. Confirm rent, security deposit, amenities and availability before visiting.</p>
-                    </details>
-                </div>
-            </article>
-
-            <!-- Property 3 -->
-            <article class="property-card">
-                <div class="property-image">
-                    <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=900&q=80"
-                        alt="Contemporary villa with a large front garden" loading="lazy">
-                    <span class="property-badge">For Sale</span>
-                    <div class="favorite">
-                        <input type="checkbox" id="fav3" aria-label="Save Garden Villa">
-                        <label for="fav3" title="Save property"></label>
-                    </div>
-                </div>
-                <div class="property-content">
-                    <p class="property-location">⌖ Jaipur, Rajasthan</p>
-                    <h3>Contemporary Garden Villa</h3>
-                    <p class="property-description">
-                        A welcoming villa with a garden and generous living areas.
-                    </p>
-                    <div class="property-features">
-                        <span>🛏 4 Beds</span>
-                        <span>▧ 4 Baths</span>
-                        <span>▱ 2,800 sqft</span>
-                    </div>
-                    <div class="property-bottom">
-                        <div class="property-price">₹1.2 crore</div>
-                        <a class="arrow-btn" href="#contact" aria-label="Ask about Contemporary Garden Villa">↗</a>
-                    </div>
-                    <details style="margin-top:15px;color:#718096;font-size:.88rem;">
-                        <summary style="cursor:pointer;color:#10866f;font-weight:700;">View property details</summary>
-                        <p style="padding-top:10px;">Illustrative listing. Confirm location, property documents and current asking price with the seller.</p>
-                    </details>
-                </div>
-            </article>
-
-            <!-- Property 4 -->
-            <article class="property-card">
-                <div class="property-image">
-                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80"
-                        alt="Premium contemporary house with outdoor lighting" loading="lazy">
-                    <span class="property-badge">For Sale</span>
-                    <div class="favorite">
-                        <input type="checkbox" id="fav4" aria-label="Save Premium Residence">
-                        <label for="fav4" title="Save property"></label>
-                    </div>
-                </div>
-                <div class="property-content">
-                    <p class="property-location">⌖ Noida, Uttar Pradesh</p>
-                    <h3>Premium Family Residence</h3>
-                    <p class="property-description">
-                        Modern architecture with comfortable family living spaces.
-                    </p>
-                    <div class="property-features">
-                        <span>🛏 4 Beds</span>
-                        <span>▧ 3 Baths</span>
-                        <span>▱ 2,100 sqft</span>
-                    </div>
-                    <div class="property-bottom">
-                        <div class="property-price">₹95 lakh</div>
-                        <a class="arrow-btn" href="#contact" aria-label="Ask about Premium Family Residence">↗</a>
-                    </div>
-                    <details style="margin-top:15px;color:#718096;font-size:.88rem;">
-                        <summary style="cursor:pointer;color:#10866f;font-weight:700;">View property details</summary>
-                        <p style="padding-top:10px;">Illustrative listing. Contact the seller to arrange a viewing and verify all property details.</p>
-                    </details>
-                </div>
-            </article>
-
-            <!-- Property 5 -->
-            <article class="property-card">
-                <div class="property-image">
-                    <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=80"
-                        alt="Elegant apartment living room with natural light" loading="lazy">
-                    <span class="property-badge rent">For Rent</span>
-                    <div class="favorite">
-                        <input type="checkbox" id="fav5" aria-label="Save Elegant Apartment">
-                        <label for="fav5" title="Save property"></label>
-                    </div>
-                </div>
-                <div class="property-content">
-                    <p class="property-location">⌖ Chandigarh</p>
-                    <h3>Elegant City Apartment</h3>
-                    <p class="property-description">
-                        A practical, light-filled apartment for everyday living.
-                    </p>
-                    <div class="property-features">
-                        <span>🛏 2 Beds</span>
-                        <span>▧ 2 Baths</span>
-                        <span>▱ 1,050 sqft</span>
-                    </div>
-                    <div class="property-bottom">
-                        <div class="property-price">₹24,000 <small>/ month</small></div>
-                        <a class="arrow-btn" href="#contact" aria-label="Ask about Elegant City Apartment">↗</a>
-                    </div>
-                    <details style="margin-top:15px;color:#718096;font-size:.88rem;">
-                        <summary style="cursor:pointer;color:#10866f;font-weight:700;">View property details</summary>
-                        <p style="padding-top:10px;">Illustrative listing. Confirm the final rental terms, maintenance charges and availability.</p>
-                    </details>
-                </div>
-            </article>
-
-            <!-- Property 6 -->
-            <article class="property-card">
-                <div class="property-image">
-                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80"
-                        alt="Modern detached home with clean architectural design" loading="lazy">
-                    <span class="property-badge">For Sale</span>
-                    <div class="favorite">
-                        <input type="checkbox" id="fav6" aria-label="Save Modern Independent House">
-                        <label for="fav6" title="Save property"></label>
-                    </div>
-                </div>
-                <div class="property-content">
-                    <p class="property-location">⌖ Yamuna Nagar, Haryana</p>
-                    <h3>Modern Independent House</h3>
-                    <p class="property-description">
-                        A practical family home with privacy and a modern layout.
-                    </p>
-                    <div class="property-features">
-                        <span>🛏 3 Beds</span>
-                        <span>▧ 2 Baths</span>
-                        <span>▱ 1,700 sqft</span>
-                    </div>
-                    <div class="property-bottom">
-                        <div class="property-price">₹58 lakh</div>
-                        <a class="arrow-btn" href="#contact" aria-label="Ask about Modern Independent House">↗</a>
-                    </div>
-                    <details style="margin-top:15px;color:#718096;font-size:.88rem;">
-                        <summary style="cursor:pointer;color:#10866f;font-weight:700;">View property details</summary>
-                        <p style="padding-top:10px;">Illustrative listing. Confirm ownership, plot area, built-up area and asking price before proceeding.</p>
-                    </details>
-                </div>
-            </article>
-
-        </div>
-
-        <div class="center-action">
-            <a href="#contact" class="btn btn-light">Ask About Available Properties →</a>
-        </div>
+    <div class="about-content">
+        <p class="tagline">ABOUT US</p>
+        <h2>Making Home Search Simple</h2>
+        <p>
+            Nestora Estates helps you explore homes for buying
+            or renting. Find a place that suits your needs,
+            lifestyle, and budget.
+        </p>
+        <a href="#contact" class="btn">Contact Us</a>
     </div>
 </section>
 
-<!-- PROPERTY TYPES -->
-<section class="section types-section" id="types">
-    <div class="container">
-        <div class="section-heading">
-            <div>
-                <span class="eyebrow">Explore your options</span>
-                <h2>Find the right kind of space</h2>
-                <p>From your first apartment to a spacious family home, start with what suits your lifestyle.</p>
-            </div>
-        </div>
-
-        <div class="types-grid">
-            <a href="#properties" class="type-card"
-                style="--type-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=80')">
-                <div>
-                    <h3>Independent Houses</h3>
-                    <p>Space for the whole family</p>
-                </div>
-            </a>
-
-            <a href="#properties" class="type-card"
-                style="--type-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=700&q=80')">
-                <div>
-                    <h3>Apartments</h3>
-                    <p>Comfortable city living</p>
-                </div>
-            </a>
-
-            <a href="#properties" class="type-card"
-                style="--type-image:url('https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=700&q=80')">
-                <div>
-                    <h3>Luxury Villas</h3>
-                    <p>Room to enjoy life</p>
-                </div>
-            </a>
-
-            <a href="#contact" class="type-card"
-                style="--type-image:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=700&q=80')">
-                <div>
-                    <h3>Plots & Land</h3>
-                    <p>Plan for your future</p>
-                </div>
-            </a>
-        </div>
-    </div>
+<!-- Contact -->
+<section class="section contact" id="contact">
+    <p class="tagline">GET IN TOUCH</p>
+    <h2>Looking for a Property?</h2>
+    <p>Tell us what kind of home you need.</p>
+    <a href="mailto:hello@nestoraestates.com" class="btn">Email Us</a>
 </section>
 
-<!-- ABOUT -->
-<section class="section" id="about">
-    <div class="container about-grid">
-
-        <div class="about-visual">
-            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=85"
-                alt="Beautiful modern home with a welcoming exterior" loading="lazy">
-
-            <div class="about-note">
-                <strong>Made for you</strong>
-                <span>A more thoughtful way to explore real estate.</span>
-            </div>
-        </div>
-
-        <div class="about-content">
-            <span class="eyebrow">A better property journey</span>
-            <h2>Finding your next home should feel simple.</h2>
-
-            <p>
-                At Nestora Estates, the goal is to make property discovery easier.
-                Compare spaces, understand the important details and take the next
-                step with more confidence. Property choose karna ek important decision
-                hai — the right information makes it easier.
-            </p>
-
-            <ul class="about-points">
-                <li><span>✓</span> Easy-to-explore property listings</li>
-                <li><span>✓</span> Clear prices and property features</li>
-                <li><span>✓</span> Guidance for buyers and renters</li>
-                <li><span>✓</span> A clean experience on every screen</li>
-            </ul>
-
-            <a href="#contact" class="btn">Talk to Our Team →</a>
-        </div>
-
-    </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section class="section process-section">
-    <div class="container">
-        <div class="section-heading">
-            <div>
-                <span class="eyebrow">Three simple steps</span>
-                <h2>Your next move, made easier</h2>
-                <p>Start with your needs, explore suitable options, then arrange a conversation or viewing.</p>
-            </div>
-        </div>
-
-        <div class="process-grid">
-            <article class="process-card">
-                <div class="process-number">01</div>
-                <h3>Share your requirements</h3>
-                <p>Choose your preferred location, budget and property type to narrow down your search.</p>
-            </article>
-
-            <article class="process-card">
-                <div class="process-number">02</div>
-                <h3>Explore your options</h3>
-                <p>Review property images, room details and pricing to understand what suits your needs.</p>
-            </article>
-
-            <article class="process-card">
-                <div class="process-number">03</div>
-                <h3>Connect with an agent</h3>
-                <p>Ask questions, verify the details and arrange a viewing before making a decision.</p>
-            </article>
-        </div>
-    </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="section">
-    <div class="container">
-        <div class="section-heading">
-            <div>
-                <span class="eyebrow">A people-first experience</span>
-                <h2>What a great home search should feel like</h2>
-                <p>Clear information and helpful guidance can make property decisions easier.</p>
-            </div>
-        </div>
-
-        <div class="testimonial-grid">
-            <article class="testimonial">
-                <div class="stars">★★★★★</div>
-                <p>
-                    "A good property search starts with clear details and an easy
-                    way to compare homes. That makes the process feel less overwhelming."
-                </p>
-                <div class="person">
-                    <div class="avatar">A</div>
-                    <div>
-                        <h4>Home Buyer</h4>
-                        <span>Sample testimonial</span>
-                    </div>
-                </div>
-            </article>
-
-            <article class="testimonial">
-                <div class="stars">★★★★★</div>
-                <p>
-                    "Having the location, price and room details together makes it
-                    easier to understand which properties are worth exploring."
-                </p>
-                <div class="person">
-                    <div class="avatar">R</div>
-                    <div>
-                        <h4>Property Renter</h4>
-                        <span>Sample testimonial</span>
-                    </div>
-                </div>
-            </article>
-
-            <article class="testimonial">
-                <div class="stars">★★★★★</div>
-                <p>
-                    "A simple interface and a clear inquiry process help people
-                    focus on finding a home that meets their needs."
-                </p>
-                <div class="person">
-                    <div class="avatar">P</div>
-                    <div>
-                        <h4>Property Seeker</h4>
-                        <span>Sample testimonial</span>
-                    </div>
-                </div>
-            </article>
-        </div>
-    </div>
-</section>
-
-<!-- CONTACT -->
-<section class="section contact-section" id="contact">
-    <div class="container contact-grid">
-
-        <div class="contact-copy">
-            <span class="eyebrow" style="color:#7de0ca;">Let's find your place</span>
-            <h2>Have a property in mind?</h2>
-            <p>
-                Tell us what you're looking for. Share your requirements and
-                prepare for the next step in your property journey.
-            </p>
-
-            <div class="contact-detail">
-                <strong>Property enquiries</strong>
-                <span>Discuss your buying or rental requirements.</span>
-            </div>
-
-            <div class="contact-detail">
-                <strong>Viewing arrangements</strong>
-                <span>Ask about availability and property visits.</span>
-            </div>
-
-            <div class="contact-detail">
-                <strong>Seller and owner enquiries</strong>
-                <span>Ask about listing your property.</span>
-            </div>
-        </div>
-
-        <div class="contact-form">
-            <h3>Send an enquiry</h3>
-
-            <form action="mailto:hello@example.com" method="post" enctype="text/plain">
-                <div class="form-grid">
-                    <div class="form-field">
-                        <label for="name">Your name</label>
-                        <input id="name" name="Name" type="text"
-                            placeholder="Enter your name" required>
-                    </div>
-
-                    <div class="form-field">
-                        <label for="email">Email address</label>
-                        <input id="email" name="Email" type="email"
-                            placeholder="you@example.com" required>
-                    </div>
-
-                    <div class="form-field">
-                        <label for="phone">Phone number</label>
-                        <input id="phone" name="Phone" type="tel"
-                            placeholder="Your contact number">
-                    </div>
-
-                    <div class="form-field">
-                        <label for="purpose">I'm interested in</label>
-                        <select id="purpose" name="Purpose">
-                            <option>Buying a property</option>
-                            <option>Renting a property</option>
-                            <option>Selling a property</option>
-                            <option>Listing a property</option>
-                        </select>
-                    </div>
-
-                    <div class="form-field full">
-                        <label for="message">Tell us what you need</label>
-                        <textarea id="message" name="Message"
-                            placeholder="Preferred location, budget, property type..."></textarea>
-                    </div>
-
-                    <div class="form-field full">
-                        <button class="btn" type="submit">Send Enquiry →</button>
-                    </div>
-                </div>
-            </form>
-
-            <p style="color:#718096;font-size:.8rem;margin-top:14px;">
-                Replace hello@example.com with your real contact email before publishing.
-                This form uses your device's configured email application; it does not
-                send directly to a server.
-            </p>
-        </div>
-    </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-section">
-    <div class="container">
-        <div class="cta-box">
-            <div>
-                <h2>Your next chapter could start at home.</h2>
-                <p>Explore properties and take the first step toward a place of your own.</p>
-            </div>
-            <a href="#properties" class="btn">Find Your Property ↗</a>
-        </div>
-    </div>
-</section>
-
-</main>
-
-<!-- FOOTER -->
-<footer class="footer">
-    <div class="container">
-
-        <div class="footer-grid">
-            <div class="footer-about">
-                <a href="#home" class="brand">
-                    <span class="brand-icon">⌂</span>
-                    <span>Nestora <span>Estates</span></span>
-                </a>
-                <p>
-                    A thoughtful way to discover homes, apartments and real
-                    estate opportunities. Find a space that feels like yours.
-                </p>
-            </div>
-
-            <div>
-                <h3>Explore</h3>
-                <ul>
-                    <li><a href="#properties">Buy a Property</a></li>
-                    <li><a href="#properties">Rent a Property</a></li>
-                    <li><a href="#types">Property Types</a></li>
-                    <li><a href="#properties">Featured Listings</a></li>
-                </ul>
-            </div>
-
-            <div>
-                <h3>Company</h3>
-                <ul>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="#about">Our Approach</a></li>
-                    <li><a href="#contact">List Your Property</a></li>
-                </ul>
-            </div>
-
-            <div>
-                <h3>Get in touch</h3>
-                <ul>
-                    <li><a href="#contact">Property Enquiries</a></li>
-                    <li><a href="#contact">Book a Viewing</a></li>
-                    <li><a href="#contact">Seller Support</a></li>
-                    <li><a href="#contact">General Questions</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>© 2026 Nestora Estates. Website demonstration. All rights reserved.</p>
-        </div>
-
-    </div>
+<!-- Footer -->
+<footer>
+    <a href="#home" class="logo">Nestora<span> Estates</span></a>
+    <p>Find your place. Feel at home.</p>
+    <p class="copyright">© 2026 Nestora Estates. All rights reserved.</p>
 </footer>
 
 </body>
 </html>
+```
